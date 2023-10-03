@@ -2,12 +2,10 @@ const colors = ["navy", "darkorchid", "goldenrod", "green", "brown", "purple", "
 
 let clickCount = 0;
 
-
 const colorButton = document.getElementById("colorButton");
 const clickMessage = document.getElementById("clickMessage");
 const editBody = document.body; 
 
-let soundEffect = new Audio("media/eff.wav");
 window.addEventListener("load", () => {
     setTimeout(() => {
         colorButton.style.opacity = "1";
@@ -26,11 +24,16 @@ window.addEventListener("load", () => {
     }, 500);
 });
 
+function playSound() {
+    let audio = new Audio('media/eff.wav');
+    audio.play();
+  }
+
 colorButton.addEventListener("click", () => {
     clickCount++;
     const colorIndex = clickCount % colors.length; 
     editBody.style.backgroundColor = colors[colorIndex];
-    soundEffect.play();
+    playSound();
 
     if (clickCount === 1) {
         clickMessage.innerHTML = `You have changed the colors of this webpage ${clickCount} time.`;
